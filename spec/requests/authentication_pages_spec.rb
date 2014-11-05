@@ -11,6 +11,14 @@ describe "Authentication" do
 		it { should have_content('Sign in') }
 	end
 
+	describe "before signin" do
+		let(:user) { FactoryGirl.create(:user) }
+		before { visit root_url }
+		
+		it { should_not have_link('Profile', href: user_path(user)) }
+		it { should_not have_link 'Settings', href: edit_user_path(user) }
+	end
+
 	describe "signin" do
 		before { visit signin_path }
 
@@ -24,7 +32,6 @@ describe "Authentication" do
 				before { click_link "Home" }
 				it { should_not have_error_message('Invalid') }
 			end
-
 		end
 
 		describe "with valid information" do
@@ -56,8 +63,33 @@ describe "Authentication" do
 				end
 
 				describe "after signing in do" do
+					
 					it "should render the desired protected page" do
 						page.should have_title('Edit user')
+					end
+
+					describe "when attempting to sign up" do
+						before { visit signup_path }
+						it { should have_selector('h1', text: 'Sample App') }
+					end
+
+					describe "submitting a POST request to the Users#create action" do
+						before do 
+							sign_in user, no_capybara: true
+							post users_path(user)
+						end
+						specify { response.should redirect_to(root_url)}
+					end
+
+					describe "when signing in again" do
+						before do
+							click_link "Sign out"
+							sign_in user
+						end
+
+						it "should render the default (profile) page" do
+							expect(page).to have_title(user.name)
+						end
 					end
 				end
 			end
