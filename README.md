@@ -6,6 +6,8 @@ by [Michael Hartl](http://michaelhartl.com/).
 
 Done as  refresher of Rails
 
+### Deployed on Heroku as https://dry-reef-5808.herokuapp.com/
+
 As a comment when deploy  on  heroku , the application does not run and do next:
 
 
