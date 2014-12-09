@@ -4,7 +4,11 @@ This is the sample application for
 the [*Ruby on Rails Tutorial*](http://railstutorial.org/)
 by [Michael Hartl](http://michaelhartl.com/).
 
+It follows the version [Rails 4.0](http://rails-4-0.railstutorial.org/book/) of the book
+
 Done as  refresher of Rails
+
+### Deployed on Heroku as https://dry-reef-5808.herokuapp.com/
 
 As a comment when deploy  on  heroku , the application does not run and do next:
 
