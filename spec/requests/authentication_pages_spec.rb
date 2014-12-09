@@ -70,7 +70,7 @@ describe "Authentication" do
 
 					describe "when attempting to sign up" do
 						before { visit signup_path }
-						it { should have_selector('h1', text: 'Sample App') }
+						it { should have_selector('h1', text: user.name) }
 					end
 
 					describe "submitting a POST request to the Users#create action" do
@@ -134,7 +134,7 @@ describe "Authentication" do
 			describe "visiting Users#edit page" do
 				before { visit edit_user_path(wrong_user) }
 				it { should_not have_title(full_title('Edit user'))}
-				it { should have_selector('h1', text: 'Sample App')}
+				it { should have_selector('h1', text: user.name)}
 			end
 		end
 
