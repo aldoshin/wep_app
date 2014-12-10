@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 
-
+function updateCounter(thisObj) {
+	$('#counter').text(140 - thisObj.value.length);
+}
